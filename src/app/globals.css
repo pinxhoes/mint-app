@@ -3,25 +3,33 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --gradient: linear-gradient(to top left, #f857a6, #ff5858);
+  --background: hsl(-31, 59.8%, 5.28%);
+  --foreground: hsl(-31, 9.2%, 98.3%);
+  --muted: hsl(-31, 46%, 19.8%);
+  --muted-foreground: hsl(-31, 9.2%, 56.6%);
+  --popover: hsl(-31, 46.6%, 8.58%);
+  --popover-foreground: hsl(-31, 9.2%, 98.3%);
+  --card: hsl(-31, 46.6%, 8.58%);
+  --card-foreground: hsl(-31, 9.2%, 98.3%);
+  --border: hsl(-31, 46%, 19.8%);
+  --input: hsl(-31, 46%, 19.8%);
+  --primary: hsl(-31, 92%, 66%);
+  --primary-foreground: hsl(-31, 9.2%, 6.6%);
+  --secondary: hsl(-31, 46%, 19.8%);
+  --secondary-foreground: hsl(-31, 9.2%, 98.3%);
+  --accent: hsl(-31, 46%, 19.8%);
+  --accent-foreground: hsl(-31, 9.2%, 98.3%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(-31, 9.2%, 98.3%);
+  --ring: hsl(-31, 92%, 66%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.theme-custom {
+  background: var(--gradient);
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.dark {
+  --background: 240 10% 10%;
+  --foreground: 0 0% 100%;
 }
