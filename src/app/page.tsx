@@ -16,6 +16,12 @@ export default function MintPage() {
           <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Stoopid App</h1>
           <div className="flex items-center space-x-4">
             <Link
+              href="/create"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-2 px-4 rounded-md transition-colors duration-300"
+            >
+              Create Mint
+            </Link>
+            <Link
               href="/collection"
               className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
             >
@@ -44,8 +50,8 @@ export default function MintPage() {
                 About This Collection
               </h2>
               <p className="text-gray-700 dark:text-gray-300">
-                This exclusive NFT collection features unique digital artwork on the Base network.
-                Each NFT is one-of-a-kind and grants you special access to our community.
+                Stoopid ist geil.
+                Each NFT is one of a kind and grants you special access to our community.
               </p>
             </div>
           </div>
