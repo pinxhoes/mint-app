@@ -4,12 +4,14 @@ import { ConnectWallet } from '@components/ConnectWallet';
 import { ThemeToggle } from '@components/ThemeToggle';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useRef, useState } from 'react';
 import { useAccount } from 'wagmi';
 
 export default function CreateMintPage() {
     const { address, isConnected } = useAccount();
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const router = useRouter();
 
     // Form state
     const [formData, setFormData] = useState({
@@ -58,8 +60,15 @@ export default function CreateMintPage() {
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
         console.log('Form data submitted:', formData);
-        // Here you would implement your minting logic
-        // This would typically involve creating the metadata and deploying the NFT contract
+
+        router.push(`/create/success?name=${encodeURIComponent(formData.name)}` +
+            `&symbol=${encodeURIComponent(formData.symbol)}` +
+            `&description=${encodeURIComponent(formData.description)}` +
+            `&price=${encodeURIComponent(formData.price)}` +
+            `&supply=${encodeURIComponent(formData.editionType === 'fixed' ? formData.editionSize : 'Open')}` +
+            `&imageUrl=${formData.mediaPreview ? encodeURIComponent(formData.mediaPreview) : '/placeholder-nft.jpg'}` +
+            `&network=${encodeURIComponent(formData.network)}`
+        );
     };
 
     if (!isConnected) {
@@ -151,8 +160,13 @@ export default function CreateMintPage() {
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
                                 {formData.name || 'Edition name'}
                             </h3>
-                            <div className="inline-flex items-center bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">
-                                {formData.symbol ? `$${formData.symbol}` : '$SYMBOL'} EDITION
+                            <div className="flex items-center gap-2">
+                                <div className="inline-flex items-center bg-black text-white px-3 py-1 rounded-full text-sm">
+                                    {formData.symbol ? `$${formData.symbol}` : '$SYMBOL'}
+                                </div>
+                                <div className="text-sm text-gray-600 dark:text-gray-400">
+                                    EDITION
+                                </div>
                             </div>
                             <p className="text-gray-700 dark:text-gray-300">
                                 {formData.description || 'Description'}
